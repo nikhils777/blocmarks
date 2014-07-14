@@ -1,0 +1,2 @@
+class BlocmarksController < ApplicationController
+end
