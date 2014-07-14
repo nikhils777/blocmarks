@@ -1,12 +1,13 @@
 class IncomingController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def create
-    puts "INCOMING PARAMS HERE: #{params}"
-    topic = params[subject]
-    user = params[sender]
-    text = params[body-plain]
-    User.all.where(email: user )
-    x = Topic.new(user_id: User.all.where(email: user )).save
-    Blocmark.new(topic_id: x.id , user_id: User.all.where(email: user )).save
-  end
+    puts "INCOMING PARAMS HERE: #{params}"
+    user = User.where(email: params[sender] )
+    if user.length == 1
+        new_topic = Topic.find_or_create_by(title: params[subject])
+        Blocmark.find_or_create_by(topic_id: new_topic.id , user_id: user.first.id, url: params[body-plain])
+    else
+        # Handle error log here?
+    end
+  end
 end
