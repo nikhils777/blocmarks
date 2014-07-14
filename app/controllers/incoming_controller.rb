@@ -9,5 +9,5 @@ class IncomingController < ApplicationController
     else
         # Handle error log here?
     end
-  end
+  end
 end
