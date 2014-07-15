@@ -1,7 +1,6 @@
 class IncomingController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def create
-    puts "INCOMING PARAMS HERE: #{params}"
     user = User.where(email: params[sender] )
     if user.length == 1
         new_topic = Topic.find_or_create_by(title: params[subject])
