@@ -5,7 +5,7 @@ class IncomingController < ApplicationController
 
     sender = params["sender"]
     
-    user = User.where(email: sender )
+    user = User.find(email: sender )
     new_topic = Topic.find_or_create_by(title: params["subject"])
     Blocmark.find_or_create_by(topic_id: new_topic.id , user_id: user.first.id, url: params["body-plain"])
   end
