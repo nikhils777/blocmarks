@@ -3,12 +3,12 @@ class IncomingController < ApplicationController
   def create
     puts "IIIINNNNNNNNCCCOOOOOOMMMMIIINNNNNGGGG!!! #{params}"
 
-    sender = params["sender"]
+    sender = params["sender"].to_s
     
     user = User.all.where(email: sender )
     if user
-      new_topic = Topic.create(title: params["subject"])
-      Blocmark.create(topic_id: new_topic.id , user_id: user.first.id, url: params["body-plain"])
+      new_topic = Topic.create(title: params["subject"].to_s)
+      Blocmark.create(topic_id: new_topic.id , user_id: user.first.id, url: params["body-plain"].to_s)
     else
       puts "EEEEERRRRROOOORRRROOOORRRR"
     end
