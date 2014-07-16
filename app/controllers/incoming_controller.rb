@@ -7,7 +7,7 @@ class IncomingController < ApplicationController
         new_topic = Topic.find_or_create_by(title: params["subject"])
         Blocmark.find_or_create_by(topic_id: new_topic.id , user_id: user.first.id, url: params["body-plain"])
     else
-        # Handle error log here?
+        puts "ERROR ERROR ERROR - did not create Blocmark"
     end
   end
 end
