@@ -6,11 +6,7 @@ class IncomingController < ApplicationController
     sender = params["sender"]
     
     user = User.where(email: sender )
-    if user.length == 1
-        new_topic = Topic.find_or_create_by(title: params["subject"])
-        Blocmark.find_or_create_by(topic_id: new_topic.id , user_id: user.first.id, url: params["body-plain"])
-    else
-        puts "ERROR ERROR ERROR - did not create Blocmark"
-    end
+    new_topic = Topic.find_or_create_by(title: params["subject"])
+    Blocmark.find_or_create_by(topic_id: new_topic.id , user_id: user.first.id, url: params["body-plain"])
   end
 end
