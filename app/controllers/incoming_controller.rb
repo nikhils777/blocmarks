@@ -6,7 +6,8 @@ class IncomingController < ApplicationController
     sender = params[:sender]
     
     user = User.all.where(email: sender )
-    if user
+    if user.exists?
+      logger.info "Got inside the if block"
       new_topic = Topic.create(title: params[:subject])
       Blocmark.create(topic_id: new_topic.id , user_id: user.first.id, url: params[:'body-plain'])
     else
