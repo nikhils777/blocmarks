@@ -13,12 +13,12 @@
 <br>
 <% end %>
 
-<% @topics_hash.each do |topic, blockmark_list| %>
+<% @topics_hash.each do |topic, blocmark_list| %>
 <table class="table table-bordered">
   <tr class="info">
     <td><%= topic.title %></td>
   </tr>
-  <% blockmark_list.each do |bloc| %>
+  <% blocmark_list.each do |bloc| %>
     <tr>
       <td><%= bloc.url %></td>
     </tr>
