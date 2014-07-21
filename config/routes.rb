@@ -2,7 +2,12 @@ Blocmarks::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "welcome/index"
   get "welcome/about"
-  root to: 'welcome#index'
+
+  authenticated :user do
+    root to: 'welcome#index', as: :authenticated_root
+  end
+  root to: 'welcome#about'
+  
   post :incoming, to: 'incoming#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
