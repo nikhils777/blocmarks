@@ -1,5 +1,8 @@
-
-
+<% if not current_user %>
+<h1>Hi Welcome to Blocmarks!</h1>
+<body>Please sign up for an account to continue</body>
+<% else %>
 
 <%= render partial: 'user' %>
 
+<% end %>

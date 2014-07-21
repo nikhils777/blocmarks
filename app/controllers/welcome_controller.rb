@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
   def index
-    @blocmarks = Blocmark.where(user: current_user).group_by {|blocmark| blocmark.topic.title }
-    puts "***** #{@blocmarks.to_yaml}"
-
+    @topics = current_user.topics
+    @blocmarks = @topics.blocmarks
   end
 
   def about
