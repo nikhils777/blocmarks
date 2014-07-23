@@ -1,4 +1,5 @@
 class Topic < ActiveRecord::Base
-  belongs_to :user
   has_many :blocmarks
+
+  validates :title, length: { minimum: 1}, presence: true, uniqueness: true
 end

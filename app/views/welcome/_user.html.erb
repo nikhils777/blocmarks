@@ -1,17 +1,5 @@
 <h1> Your Blocmarks! </h1>
-<% @topics.each do |topic| %>
-<table class="table table-bordered">
-  <tr class="info">
-    <td><%= topic.title %></td>
-  </tr>
-<% topic.blocmarks.each do |bloc| %>
-  <tr>
-    <td><%= bloc.url %></td>
-  </tr>
-<% end %>
-</table>
-<br>
-<% end %>
+
 
 <% @topics_hash.each do |topic, blocmark_list| %>
 <table class="table table-bordered">
