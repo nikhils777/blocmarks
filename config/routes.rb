@@ -3,6 +3,7 @@ Blocmarks::Application.routes.draw do
   get "welcome/index"
   get "welcome/about"
   resources :blocmarks, only: [:index ]
+  resources :likes
   authenticated :user do
     root to: 'welcome#index', as: :authenticated_root
   end

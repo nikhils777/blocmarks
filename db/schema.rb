@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723231541) do
+ActiveRecord::Schema.define(version: 20140724150359) do
 
   create_table "blocmarks", force: true do |t|
     t.string   "url"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20140723231541) do
 
   add_index "blocmarks", ["topic_id"], name: "index_blocmarks_on_topic_id"
   add_index "blocmarks", ["user_id"], name: "index_blocmarks_on_user_id"
+
+  create_table "likes", force: true do |t|
+    t.boolean  "yes"
+    t.integer  "user_id"
+    t.integer  "blocmark_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["blocmark_id"], name: "index_likes_on_blocmark_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "topics", force: true do |t|
     t.string   "title"
