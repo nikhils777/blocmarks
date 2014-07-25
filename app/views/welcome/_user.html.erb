@@ -4,14 +4,28 @@
 <% @topics_hash.each do |topic, blocmark_list| %>
 <table class="table table-bordered">
   <tr class="info">
-    <td><%= topic.title %></td>
+    <td><%= link_to "#{topic.title}", topic %></td>
+    <td>Destroy?</td>
   </tr>
   <% blocmark_list.each do |bloc| %>
     <tr>
       <td><%= bloc.url %></td>
+      <td><%= button_to "Delete", {:controller => "blocmarks", :action => "destroy", :id => bloc.id } , :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 <br>  
 <% end %>
+<table class="table table-bordered">
+  <tr class="info">
+    <td>Blocmarks you like!</td>
+    <td>Delete!</td>
+  </tr>
+  <% current_user.likes.each do |like| %>
+  <tr>
+    <td><%= Blocmark.find(like.blocmark_id).url %></td>
+    <td><%= button_to "Delete", {:controller => "likes", :action => "destroy", :id => like.id } , :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
 

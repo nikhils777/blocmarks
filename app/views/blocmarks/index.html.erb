@@ -2,13 +2,16 @@
 <% @topics.each do |topic| %>
 <table class="table table-bordered">
   <tr class="info">
-    <td><%= topic.title %></td>
+    <td><%= link_to "#{topic.title}", topic %></td>
+    <td>Like this?</td>
   </tr>
-  <% topic.blocmarks.each do |bloc| %>
+  <% topic.blocmarks.reverse.each do |bloc| %>
     <tr>
       <td><%= bloc.url %></td>
       <% if current_user && current_user.blocmarks.include?(bloc) %>
-        <td>Already Liked!</td>
+        <td>You created this!</td>
+      <% elsif current_user && (current_user.likes.where(user_id: current_user.id , blocmark_id: bloc.id).count > 0) %>
+        <td>Liked!</td>
       <% elsif current_user %>
         <td><%= button_to "Like!", {:controller => "likes", :action => "create", :blocmark_id => bloc.id, :user_id => current_user.id} , :method => :post %></td>
       <% else %>

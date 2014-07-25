@@ -1,0 +1,10 @@
+<table class="table table-bordered">
+  <tr class="info">
+    <td><%= @topic.title %></td>
+  </tr>
+  <% @blocmarks.each do |bloc| %>
+    <tr>
+      <td><%= bloc.url %></td>
+    </tr>
+  <% end %>
+</table>

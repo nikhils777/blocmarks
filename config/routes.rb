@@ -2,7 +2,8 @@ Blocmarks::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get "welcome/index"
   get "welcome/about"
-  resources :blocmarks, only: [:index ]
+  resources :blocmarks, only: [:index , :destroy ]
+  resources :topics, only: [:show]
   resources :likes
   authenticated :user do
     root to: 'welcome#index', as: :authenticated_root
