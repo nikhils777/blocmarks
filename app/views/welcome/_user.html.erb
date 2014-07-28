@@ -26,7 +26,7 @@
   <% current_user.likes.each do |like| %>
   <tr>
     <td><%= link_to Blocmark.find(like.blocmark_id).url , Blocmark.find(like.blocmark_id).url %></td>
-    <td><%= button_to "Delete", {:controller => "likes", :action => "destroy", :id => like.id } , :method => :delete %></td>
+    <td><%= button_to "Unlike", {:controller => "likes", :action => "destroy", :id => like.id } , :method => :delete %></td>
   </tr>
   <% end %>
 </table>
