@@ -7,7 +7,7 @@
   </tr>
   <% topic.blocmarks.reverse.each do |bloc| %>
     <tr>
-      <td><%= bloc.url %></td>
+      <td><%= link_to bloc.url , bloc.url %></td>
       <% if current_user && current_user.blocmarks.include?(bloc) %>
         <td>You created this!</td>
       <% elsif current_user && (current_user.likes.where(user_id: current_user.id , blocmark_id: bloc.id).count > 0) %>
