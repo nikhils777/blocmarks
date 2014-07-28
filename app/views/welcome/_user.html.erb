@@ -1,7 +1,8 @@
+
 <h1 color="blue" align="center"> Your Blocmarks! </h1>
 <h2>Creating blocmarks is easy! Just send an email to me@app26914219.mailgun.org containing your hashtag topics seperated by spaces in the subject and the complete url(including the https) in the body!</h2>
 
-<% @topics_hash.each do |topic, blocmark_list| %>
+<% @topics_hash.each do |topic, blocmark_list| if @topics_hash.length > 0 %>
 <table class="table table-bordered">
   <tr class="info">
     <td><%= link_to "#{topic.title}", topic %></td>
