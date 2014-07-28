@@ -4,7 +4,7 @@
   </tr>
   <% @blocmarks.each do |bloc| %>
     <tr>
-      <td><%= bloc.url %></td>
+      <td><%= link_to bloc.url , bloc.url %></td>
     </tr>
   <% end %>
 </table>
