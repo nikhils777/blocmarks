@@ -4,9 +4,9 @@ class LikesController < ApplicationController
   def create
     @like = Like.create( user_id: params[:user_id] , blocmark_id: params[:blocmark_id] )
     if @like.save
-      redirect_to root_path , notice: "like created!"
+      redirect_to blocmarks_path , notice: "like created!"
     else
-      redirect_to root_path , notice: "Not saved!"
+      redirect_to blocmarks_path , notice: "Like not created! Try again!"
     end
   end
   def destroy
