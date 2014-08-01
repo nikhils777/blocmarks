@@ -1,0 +1,2 @@
+class BlocmarkPolicy < ApplicationPolicy
+end

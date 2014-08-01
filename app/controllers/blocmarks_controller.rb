@@ -1,10 +1,11 @@
 class BlocmarksController < ApplicationController
   def index
-    @topics = Topic.all.reverse
+    @topics = Blocmark.all.reverse.group_by{ |blocmark| blocmark.topic }
     @like = Like.new
   end
   def destroy
     @blocmark = Blocmark.find(params[:id])
+    authorize @blocmark
     if @blocmark.destroy
       redirect_to root_path , notice: "Blocmark deleted!"
     else

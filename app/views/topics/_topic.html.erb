@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+  <tr class="info">
+    <td><%= topic.title %></td>
+    <td>Like?</td>
+  </tr>
+  <% blocmarks.each do |bloc| %>
+    <tr>
+      <td><%= link_to bloc.url , bloc.url %></td>
+      <td>
+        <% if current_user %>
+          <% if bloc.user == current_user %>
+            <%= button_to "Delete", {:controller => "blocmarks", :action => "destroy", :id => bloc.id } , :method => :delete %>
+          <% elsif (current_user.likes.where(user_id: current_user.id , blocmark_id: bloc.id).count > 0) %>
+            <%= button_to "Unlike?", {:controller => "likes", :action => "destroy", :id => bloc.likes.first.id } , :method => :delete %>
+          <% else%>
+            <%= button_to "Like!", {:controller => "likes", :action => "create", :blocmark_id => bloc.id , :user_id => current_user.id} , :method => :post %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

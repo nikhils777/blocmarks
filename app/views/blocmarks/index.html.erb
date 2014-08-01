@@ -1,24 +1,2 @@
 <h1>All Topics!</h1>
-<% @topics.each do |topic| %>
-<table class="table table-bordered">
-  <tr class="info">
-    <td><%= link_to "#{topic.title}", topic %></td>
-    <td>Like this?</td>
-  </tr>
-  <% topic.blocmarks.reverse.each do |bloc| %>
-    <tr>
-      <td><%= link_to bloc.url , bloc.url %></td>
-      <% if current_user && current_user.blocmarks.include?(bloc) %>
-        <td>You created this!</td>
-      <% elsif current_user && (current_user.likes.where(user_id: current_user.id , blocmark_id: bloc.id).count > 0) %>
-        <td>Liked!<%= button_to "Unlike?", {:controller => "likes", :action => "destroy", :id => bloc.likes.first.id } , :method => :delete %></td>
-      <% elsif current_user %>
-        <td><%= button_to "Like!", {:controller => "likes", :action => "create", :blocmark_id => bloc.id, :user_id => current_user.id} , :method => :post %></td>
-      <% else %>
-        <td>Sign up!</td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
-<br>
-<% end %>
+<%= render partial: 'blocmark', locals: { topics: @topics} %>

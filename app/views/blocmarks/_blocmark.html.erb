@@ -1,0 +1,6 @@
+<% topics.each do |topic, blocmark_list| %>
+  <% if blocmark_list.length > 0 %>
+    <%= render partial: 'topics/topic', locals: { topic: topic, blocmarks: blocmark_list} %>
+  <% end %>
+  <br>
+<% end %>

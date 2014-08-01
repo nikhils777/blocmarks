@@ -1,8 +1,9 @@
 <% if not current_user %>
-<h1>Hi Welcome to Blocmarks!</h1>
-<body>Please sign up for an account to continue</body>
+  <h1>Hi Welcome to Blocmarks!</h1>
+  <body>Please sign up for an account to continue</body>
 <% else %>
-
-<%= render partial: 'user' %>
-
+  <h1 color="blue" align="center"> Your Blocmarks! </h1>
+  <h2>Creating blocmarks is easy! Just send an email to me@app26914219.mailgun.org containing your hashtag topics seperated by spaces in the subject and the complete url(including the https) in the body!</h2>
+  <%= render partial: 'blocmarks/blocmark', locals: { topics: @topics_hash } %>
+  <%= render partial: 'user' %>
 <% end %>
