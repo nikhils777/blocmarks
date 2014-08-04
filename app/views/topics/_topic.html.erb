@@ -12,11 +12,12 @@
             <%= button_to "Delete", {:controller => "blocmarks", :action => "destroy", :id => bloc.id } , :method => :delete %>
           <% elsif (current_user.likes.where(user_id: current_user.id , blocmark_id: bloc.id).count > 0) %>
             <%= button_to "Unlike?", {:controller => "likes", :action => "destroy", :id => bloc.likes.first.id } , :method => :delete %>
-          <% elsif%>
+          <% else%>
             <%= button_to "Like!", {:controller => "likes", :action => "create", :blocmark_id => bloc.id , :user_id => current_user.id} , :method => :post %>
-          <% else %>
-          Sign up!
           <% end %>
+        <% end %>
+        <% if not current_user %>
+        Sign Up!
         <% end %>
       </td>
     </tr>
