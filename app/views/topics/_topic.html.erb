@@ -1,6 +1,6 @@
 <table class="table table-bordered">
   <tr class="info">
-    <td><%= topic.title %></td>
+    <td><%= link_to "#{topic.title}", topic_path(topic) %></td>
     <td>Like?</td>
   </tr>
   <% blocmarks.each do |bloc| %>
